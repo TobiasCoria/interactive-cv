@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  color: #333;
+  margin: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+}
+
+.header {
+  text-align: center;
+}
+
+.CVitae-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 55%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.role {
+  font-weight: bold;
+  color: #555;
+}
+
+section {
+  margin-top: 30px;
+}
+
+h2 {
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.skills li {
+  background: #eee;
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+body.dark {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .container {
+  background: #1e1e1e;
+}
+
+body.dark h2 {
+  border-color: #444;
+}
+
+body.dark .skills li {
+  background: #333;
+  color: #eee;
+}
