@@ -3,16 +3,20 @@ console.log("CV loaded successfully");
 const toggleButton = document.getElementById("themeToggle");
 const body = document.body;
 
-if (localStorage.getItem("theme") === "dark") {
+// estado inicial desde localStorage
+const isDarkSaved = localStorage.getItem("theme") === "dark";
+
+if (isDarkSaved) {
   body.classList.add("dark");
+  toggleButton.textContent = "☀️";
+} else {
+  toggleButton.textContent = "🌙";
 }
 
+// click
 toggleButton.addEventListener("click", () => {
-  body.classList.toggle("dark");
+  const isDark = body.classList.toggle("dark");
 
-  if (body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-  }
+  toggleButton.textContent = isDark ? "☀️Light Mode" : "🌙Dark Mode";
+  localStorage.setItem("theme", isDark ? "dark" : "light");
 });
