@@ -2,12 +2,9 @@
   "name": "interactive-cv-backend",
   "version": "1.0.0",
   "description": "Backend for interactive CV",
- "scripts": {
-  "start": "node backend/server.js",
-  "dev": "nodemon backend/server.js"
-}
-
-    
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -18,4 +15,3 @@
     "nodemon": "^3.1.11"
   }
 }
-
