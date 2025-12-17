@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -7,6 +8,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Servir frontend
+app.use(express.static(path.join(__dirname, '../assets')));
+
+// Health check
 app.get('/api/status', (req, res) => {
   res.json({
     status: 'ok',
@@ -14,12 +19,7 @@ app.get('/api/status', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
+// Contact endpoint
 app.post('/api/contact', (req, res) => {
   const { name, email, message } = req.body;
 
@@ -30,11 +30,7 @@ app.post('/api/contact', (req, res) => {
     });
   }
 
-  console.log('New contact message:', {
-    name,
-    email,
-    message
-  });
+  console.log('New contact message:', { name, email, message });
 
   res.json({
     success: true,
@@ -42,13 +38,12 @@ app.post('/api/contact', (req, res) => {
   });
 });
 
-const express = require('express');
-const path = require('path');
-const app = express();
+// Fallback frontend
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../assets/index.html'));
+});
+
 const PORT = process.env.PORT || 3000;
-
-// Servir frontend desde assets
-app.use(express.static(path.join(__dirname, '../assets')));
-
-app.listen(PORT, () => console.log);
-
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
